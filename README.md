@@ -9,9 +9,8 @@ Based on **AMCSS** Attribute Modules for CSS - Specification <a href="github.com
 --------------------------------------------------------
 
 ## Installation
-```html
  <script src="am.js"></script>
-```
+
 On older browsers which don't support Array.IsArray and Array.indexOf include es5-shim <a href="https://github.com/es-shims/es5-shim">github.com/es-shims/es5-shim</a> before am.js
 
 ## some Issues:
