@@ -175,8 +175,10 @@ console.log(
 ```
 --------------------------------------------------------
 ## Other functions:
-* <code>$am.getVersion()</code> returns version string
-* <code>$am.useForcedRefresh()</code> returns **true** if elements are not automatically updated on module change
+`$am.getVersion()` returns version string
+
+`$am.useForcedRefresh()` returns **true** if elements are not automatically updated on module change
+
 --------------------------------------------------------
 ## Licence
-[MIT License](LICENSE). © Oliver Jean EIfler (olli.eifler@gmail.com).
+[MIT License](LICENSE). (Copyright) Oliver Jean EIfler (olli.eifler@gmail.com).
