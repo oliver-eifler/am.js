@@ -1,0 +1,265 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8">
+  <meta content="content-type" content="text/html; charset=utf-8"/>
+  <title>Olli am CSS TEST</title>
+  <style type="text/css">
+  <!--
+  /* for refresh test
+  [wurstl] {
+    height:100px;
+  }
+  [wurstl~="test"] {
+    height:200px;
+  }
+  */
+
+  /* Module Name is not case sensitive except IE 7 */
+  /* Module Name should not use - [i.e. am-Module]  for IE7 */
+[amModule] {
+    background: #000;
+    color:#FFF;
+    width: 50%;
+    margin:0.5em auto;
+    padding:.5em;
+  }
+  [amModule~=round] {
+    border-radius:1em;
+  }
+  [amModule~=green] {
+    color: #0F0;
+  }
+  [amModule~=big] {
+    font-size:2em;
+  }
+[am-Module] {
+    background: #888;
+    color:#FFF;
+    width: 50%;
+    margin:0.5em auto;
+    padding:.5em;
+  }
+  [am-Module~=round] {
+    border-radius:1em;
+  }
+  [am-Module~=green] {
+    color: #0F0;
+  }
+  [am-Module~=big] {
+    font-size:2em;
+  }
+/* for ie7 only [a..z][A..Z][0..9] */
+[ollimodule] {
+    background: #880;
+    color:#FFF;
+    width: 50%;
+    margin:0.5em auto;
+    padding:.5em;
+  }
+  [ollimodule~=round] {
+    border-radius:1em;
+  }
+  [ollimodule~=green] {
+    background: #0F0;
+  }
+  [ollimodule~=big] {
+    font-size:2em;
+  }
+[olli4711] {
+    background: #880;
+    color:#FFF;
+    width: 50%;
+    margin:0.5em auto;
+    padding:.5em;
+    text-decoration: underline;
+  }
+  [olli4711~=round] {
+    border-radius:1em;
+  }
+  [olli4711~=green] {
+    background: #0F0;
+  }
+  [olli4711~=big] {
+    font-size:2em;
+  }
+[amButton] {
+    background: #008;
+    border: 1px solid #000;
+    color:#FFF;
+    width: 50%;
+    margin:0.5em auto;
+    padding:.5em;
+  }
+  [amButton~=round] {
+    border-radius:1em;
+  }
+  [amButton~=green] {
+    color: #0F0;
+  }
+  [amButton~=big] {
+    font-size:2em;
+  }
+[am-Button] {
+    background: #808;
+    border: 1px solid #000;
+    color:#FFF;
+    width: 50%;
+    margin:0.5em auto;
+    padding:.5em;
+  }
+  [am-Button~=round] {
+    border-radius:1em;
+  }
+  [am-Button~=green] {
+    color: #0F0;
+  }
+  [am-Button~=big] {
+    font-size:2em;
+  }
+
+  /* Module Name should not use - or + or _  for IE7 or use always lower-case*/
+  [am-Mixed] {
+    background: #f00;
+    color:#FFF;
+    width: 50%;
+    margin:0.5em auto;
+    padding:.5em;
+  }
+  [am-lower] {
+    background: #008;
+    color:#FFF;
+    width: 50%;
+    margin:0.5em auto;
+    padding:.5em;
+  }
+[am-Mixed~=big] {
+    font-size:2em;
+  }
+[am-lower~=big] {
+    font-size:2em;
+  }
+
+
+
+ /* Module Values are always case sensitive */
+
+  -->
+  </style>
+ <script src="am.js"></script>
+  <script>
+  var m= "amModule",
+  element = null,
+  totest = null;
+    function xEachN(p,i,d,f)
+    {
+        var e = document.getElementById(p + i);
+        while (e) {
+            f(e, i, d);
+            e = document.getElementById(p + (++i));
+        }
+    }
+  function moduleinfo(el)
+  {
+    var modules = $am.getAllModules(el);
+    var out=[""+el.getAttribute("id")+":"];
+    for (var i = 0, n = modules.length; i < n; i++)
+    {
+        var str = modules[i]+"=\"";
+        str+=$am(el).get(modules[i]).join(" ");
+        str+="\"";
+        out.push(str);
+    }
+    el.title = out.join(" ");
+  }
+  function debugModules()
+  {
+    xEachN("test",2,null,function(e,i,d) {moduleinfo(e);e.firstChild.innerHTML = e.title;});
+  }
+  function info()
+  {
+    var e=element;
+    moduleinfo(e);
+    e.firstChild.innerHTML = e.title;
+    e=document.getElementById('refresh');
+    if ($am.useForcedRefresh() === true)
+        e.innerHTML = "refresh: forced";
+    else if ($am.useForcedRefresh() === false)
+        e.innerHTML = "refresh: auto";
+    else
+        e.innerHTML = "refresh: not tested";
+  }
+  function changemod(nm)
+  {
+    xEachN("a",1,null,function(e,i,d) {e.innerHTML = e.innerHTML.replace(m,nm);});
+    var e=element;
+    $am.removeModule(e,m);
+    m=nm;
+    $am.setModule(e,m);
+    info();
+  }
+  </script>
+</head>
+
+<body>
+
+<h1>$am (javascript) TEST</h1>
+<p  style = 'text-align:center'>
+<b>USE:</b> <a href="#" onclick="changemod('amModule');return false;">amModule</a>
+&nbsp;<a href="#" onclick="changemod('am-Module');return false;">am-Module</a>
+&nbsp;<a href="#" onclick="changemod('ammodule');return false;">ammodule</a>
+&nbsp;<a href="#" onclick="changemod('am-module');return false;">am-module</a>
+<br><b>USE:</b> <a href="#" onclick="changemod('amButton');return false;">amButton</a>
+&nbsp;<a href="#" onclick="changemod('am-Button');return false;">am-Button</a>
+&nbsp;<a href="#" onclick="changemod('ambutton');return false;">ambutton</a>
+&nbsp;<a href="#" onclick="changemod('am-button');return false;">am-button</a>
+<br><a href="#" onclick="totest.toggle('amModule amButton');info();return false;">toggle('amModule amButton')</a>
+<br><b>IE7:</b><a href="#" onclick="changemod('ollimodule');return false;">ollimodule</a>
+&nbsp;<a href="#" onclick="changemod('olliModule');return false;">olliModule</a>
+&nbsp;<a href="#" onclick="changemod('olli4711');return false;">olli4711</a>
+<br><br><a id= "a1" href="#" onclick="totest.set(m);info();return false;">set('amModule')</a>
+&nbsp;<a id= "a2" href="#" onclick="totest.set(m,'green big');info();return false;">set('amModule','green big')</a>
+&nbsp;<a id= "a3" href="#" onclick="totest.remove(m);info();return false;">remove('amModule')</a>
+&nbsp;<a id= "a4" href="#" onclick="totest.toggle(m);info();return false;">toggle('amModule')</a>
+<br><a id= "a5" href="#" onclick="totest.setVal(m,'green');info();return false;">setVal('amModule','green')</a>
+&nbsp;<a id= "a6" href="#" onclick="totest.removeVal(m,'green');info();return false;">removeVal('amModule','green')</a>
+&nbsp;<a id= "a7" href="#" onclick="totest.toggleVal(m,'green');info();return false;">toggleVal('amModule','green')</a>
+<br><a id= "a8" href="#" onclick="totest.setVal(m,'round');info();return false;">setVal('amModule','round')</a>
+&nbsp;<a id= "a9" href="#" onclick="totest.removeVal(m,'round');info();return false;">removeVal('amModule','round')</a>
+&nbsp;<a id= "a10" href="#" onclick="totest.toggleVal(m,'round');info();return false;">toggleVal('amModule','round')</a>
+<br><a id= "a11" href="#" onclick="totest.setVal(m,'big');info();return false;">setVal('amModule','big')</a>
+&nbsp;<a id= "a12" href="#" onclick="totest.removeVal(m,'big');info();return false;">removeVal('amModule','big')</a>
+&nbsp;<a id= "a13" href="#" onclick="totest.toggleVal(m,'big');info();return false;">toggleVal('amModule','big')</a>
+<br><a id= "a14" href="#" onclick="totest.toggleVal(m,'round green big');info();return false;">toggleVal('amModule','round green big')</a>
+<div id='test1' amModule><div>test1: amModule</div><span id="refresh">???</span></div>
+<hr>
+<h1>amcss TEST</h1>
+<div id='test2' amModule="round"><div>amModule="round"</div></div>
+<div id='test3' amModule="green"><div>amModule="green"</div></div>
+<div id='test4' amModule="big"><div>amModule="big"</div></div>
+<div id='test5' amModule="round green big"><div>amModule="round green big"</div></div>
+<div id='test6' ammodule="round green big"><div>ammodule="round green big"</div><span>*should not be styled in IE7</span></div>
+<div id='test7' amModule="Green"><div>amModule="Green"</div><span>*should not be green in any browser</span></div>
+<div id='test8' ammodule="Green"><div>ammodule="Green"</div><span>*should not be green in any browser and not styled in IE7</span></div>
+<h1>Strange IE7</h1>
+<div id='test9' am-Mixed><div>am-Test</div><span>*strange in IE7 - should be styled</span></div>
+<div id='test10' am-Mixed="big"><div>am-Test</div><span>*strange in IE7 - should be styled</span></div>
+<div id='test11' am-lower><div>am-lower</div><span>*strange in IE7 - modulename with - only lowercase</span></div>
+<div id='test12' am-lower="big"><div>am-lower</div><span>*strange in IE7 - modulename with - only lowercase</span></div>
+</p>
+
+
+
+<script>
+element = document.getElementById("test1");
+totest = $am(element);
+debugModules();
+info();
+$am.fn.foo = function() {console.log("am.fn.foo");}
+</script>
+</body>
+
+</html>
