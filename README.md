@@ -132,7 +132,7 @@ console.log(
 ```
 
 ### .hasVal(module,values)
-<code>.setVal(module,values)</code> returns **true** if all values exists, otherwith **false**
+<code>.hasVal(module,values)</code> returns **true** if all values exists, otherwith **false**
  * `module` Modulename (string)
  * `values` Values to check. Array of valuenames or string with one or more space-seperated value-names
 
@@ -141,8 +141,8 @@ console.log(
 ```
 ```js
     $am(document.getElementById("test")).hasVal("am-Button","big"); //returns false
-    $am(document.getElementById("test")).hasVal("am-Grid","round"); //returns true;
-    $am(document.getElementById("test")).hasVal("am-Grid","round big"); //returns false;
+    $am(document.getElementById("test")).hasVal("am-Button","round"); //returns true;
+    $am(document.getElementById("test")).hasVal("am-Button","round big"); //returns false;
 
 ```
 
