@@ -2,7 +2,7 @@
 a javascript library for using attributes and their values rather than classes for styling HTML elements.
 
 
-Based on **AMCSS** Attribute Modules for CSS - Specification <a href="github.com/amcss/attribute-module-specification">github.com/amcss/attribute-module-specification</a>.
+Based on **AMCSS** Attribute Modules for CSS - Specification <a href="https://github.com/amcss/attribute-module-specification">github.com/amcss/attribute-module-specification</a>.
 
 ** Works on all browsers which supports attribute and ~= selectors **
 
